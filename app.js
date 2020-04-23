@@ -175,7 +175,7 @@ document.querySelector(".your_class").addEventListener("keypress", function (evt
 });
 
 const domains = [
-  "nicholas919.github.io/order/#",
+  "nicholas919.github.io/order/",
   "nicholas919.github.io/order/#"
 ]
 window.addEventListener("message", messageHandler, false);
