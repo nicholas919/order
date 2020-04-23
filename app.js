@@ -118,7 +118,7 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
   const pengiriman = document.querySelector("#pengiriman").value;
 
   // validation
-  if(namaCustomer === '' || produk === '' || noHpCustomer === '' || transaksi === '' || pengiriman === '') {
+  if(namaCustomer === '<p></p>' || produk === '<p></p>' || noHpCustomer === '<p></p>' || transaksi === '<p></p>' || pengiriman === '<p></p>') {
     // show NOT VALIDATED alert
     UI.showAlert('Isi Data dengan Lengkap!', 'danger');
   } else {
@@ -174,43 +174,3 @@ document.querySelector(".your_class").addEventListener("keypress", function (evt
     }
 });
 
-const domains = [
-  "nicholas919.github.io/order/",
-  "nicholas919.github.io/order/#"
-]
-window.addEventListener("message", messageHandler, false);
-function messageHandler(event) {
-  if (!domains.includes(event.origin))
-    return;
-  const { action, key, value } = event.data
-  if (action == 'save'){
-    window.localStorage.setItem(key, JSON.stringify(value))
-  } else if (action == 'get') {
-    event.source.postMessage({
-      action: 'returnData',
-      key,
-      JSON.parse(window.localStorage.getItem(key))
-    }, '*')
-  }
-}
-
-const data = doSomeThingToGetData()
-const iframe = iframe = document.getElementById('iframe-id')
-iframe.contentWindow.postMessage({
-  action: 'save',
-  key: 'keyForData',
-  value: data
-})
-
-const iframe = iframe = document.getElementById('iframe-id')
-iframe.contentWindow.postMessage({
-  action: 'get',
-  key: 'keyForData'
-})
-window.addEventListener("message", messageHandler, false);
-function messageHandler(event) {
-  const { action, key, value } = event.data
-  if (action == 'returnData'){
-    useData(key, value)
-  }
-}
