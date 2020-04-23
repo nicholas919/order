@@ -174,33 +174,43 @@ document.querySelector(".your_class").addEventListener("keypress", function (evt
     }
 });
 
-window.onload = function() {
-    // Get the window displayed in the iframe.
-    var receiver = document.getElementById('receiver').contentWindow;
-
-    // Get a reference to the 'Send Message' button.
-    var btn = document.getElementById('send');
-
-    // A function to handle sending messages.
-    function sendMessage(e) {
-        // Prevent any default browser behaviour.
-        e.preventDefault();
-
-        // Send a message with the text 'Hello Treehouse!' to the new window.
-        receiver.postMessage('cookie data!', 'http://wrong-domain.com');
-    }
-
-    // Add an event listener that will execute the sendMessage() function
-    // when the send button is clicked.
-    btn.addEventListener('click', sendMessage);
+const domains = [
+  "nicholas919.github.io/order/#",
+  "nicholas919.github.io/order/#"
+]
+window.addEventListener("message", messageHandler, false);
+function messageHandler(event) {
+  if (!domains.includes(event.origin))
+    return;
+  const { action, key, value } = event.data
+  if (action == 'save'){
+    window.localStorage.setItem(key, JSON.stringify(value))
+  } else if (action == 'get') {
+    event.source.postMessage({
+      action: 'returnData',
+      key,
+      JSON.parse(window.localStorage.getItem(key))
+    }, '*')
+  }
 }
 
-window.onload=function(){
-    var messageEle=document.getElementById('message');
-    function receiveMessage(e){
-        if(e.origin!=="http://correct-domain.com")
-        return;
-        messageEle.innerHTML="Message Received: "+e.data;
-    }
-    window.addEventListener('message',receiveMessage);
+const data = doSomeThingToGetData()
+const iframe = iframe = document.getElementById('iframe-id')
+iframe.contentWindow.postMessage({
+  action: 'save',
+  key: 'keyForData',
+  value: data
+})
+
+const iframe = iframe = document.getElementById('iframe-id')
+iframe.contentWindow.postMessage({
+  action: 'get',
+  key: 'keyForData'
+})
+window.addEventListener("message", messageHandler, false);
+function messageHandler(event) {
+  const { action, key, value } = event.data
+  if (action == 'returnData'){
+    useData(key, value)
+  }
 }
