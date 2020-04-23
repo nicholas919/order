@@ -4,32 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="images/ezgif.com-gif-maker.png" type="image/png">
   <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
-
+  <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
   <title>Database Order</title>
 </head>
 <body>
-
-  <div class="container mt-4">
+<nav class="navbar navbar-light bg-dark col">
+   <a href="#">Galaxy</a>
+ </nav>
+  <div class="container mt-2">
     <h1 class="display-4 text-center"></h1>
     <br>
+    <div>
     <form id="book-form">
-      <div class="form-group">
+      <div class="form-group col">
         <label for="namaCustomer">Nama Customer</label>
-        <input type="text" id="namaCustomer" class="form-control" placeholder="Isi Nama Customer...">
+        <input type="text" id="namaCustomer" class="form-control" placeholder="Isi Nama Customer..." autocomplete="off">
       </div>
-       <div class="form-group">
+       <div class="form-group col">
         <label for="produk">Produk</label>
         <textarea id="produk" class="form-control" placeholder="Isi Produk..."></textarea>
       </div>
-      <div class="form-group">
+      <div class="form-group col">
         <label for="noHpCustomer">No HP Customer</label>
-        <input type="number" id="noHpCustomer" class="form-control" placeholder="e.g. 081234567890" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        <input type="number" id="noHpCustomer" class="form-control your_class" placeholder="e.g. 081234567890" autocomplete="off" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
     maxlength = "13">
       </div>
-      <div class="form-group">
+      <div class="form-group col">
         <label for="transaksi">Transaksi</label>
         <select  id="transaksi" class="form-control">
           <option value="" disabled selected hidden> Transaksi Melalui...</option>
@@ -43,12 +47,14 @@
           <option>Website</option>
         </select>
       </div>
-       <div class="form-group">
+       <div class="form-group col">
         <label for="pengiriman">Ekspedisi</label>
         <select id="pengiriman" class="form-control">
           <option value="" disabled selected hidden> Silahkan Pilih Ekspedisi</option>
           <option>GoSend</option>
           <option>Grab</option>
+          <option>Grab Sameday</option>
+          <option>Grab Instant</option>
           <option>JNE REG</option>
           <option>JNE YES</option>
           <option>JNT</option>
@@ -57,21 +63,22 @@
       </div>
       <br>
       <input type="submit" value="Submit" class="btn btn-success btn-block mb-4 tombol">
+    </div>
     </form>
-    <table class="table table-striped mt-4">
+
+    <table class="table table-striped mt-4 col-lg-12"">
       <thead>
         <tr>
           <th>Nama Customer</th>
           <th>Produk</th>
           <th>No HP Customer</th>
-          <th>Transaksi Via</th>
-          <th>Pengiriman Via</th>
-          <th> </th>
+          <th>Transaksi</th>
+          <th>Ekspedisi</th>
+          <th></th>
         </tr>
       </thead>
       <tbody id="book-list"></tbody>
     </table>
-  </div>
 
   <script src="https://kit.fontawesome.com/4ca5255d6d.js"></script>
   <script src="app.js"></script> 

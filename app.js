@@ -120,7 +120,7 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
   // validation
   if(namaCustomer === '' || produk === '' || noHpCustomer === '' || transaksi === '' || pengiriman === '') {
     // show NOT VALIDATED alert
-    UI.showAlert('***Please Complete All Fields***', 'danger');
+    UI.showAlert('Isi Data dengan Lengkap!', 'danger');
   } else {
   // instantiate book
     const book = new Book(namaCustomer, produk, noHpCustomer, transaksi, pengiriman);
@@ -132,7 +132,7 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
     Store.addBook(book);
 
     // show VALIDATED alert
-    UI.showAlert('Book successfully added!', 'success');  
+    UI.showAlert('Data Berhasil Ditambahkan!', 'success');  
 
     //clear fields
     UI.clearFields();
@@ -149,6 +149,28 @@ document.querySelector("#book-list").addEventListener("click", (e) => {
   Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
 
   // show BOOK REMOVED SUCCESS alert
-  UI.showAlert('Book successfully removed!', 'warning');
+  UI.showAlert('Data Berhasil Dihapus!', 'warning');
+});
+
+// time expiry 168 hours
+const hours = 168; 
+const now = new Date().getTime();
+const setupTime = localStorage.getItem('setupTime');
+if (setupTime == null) {
+    localStorage.setItem('setupTime', now)
+} else {
+    if(now-setupTime > hours*60*60*1000) {
+        localStorage.clear()
+        localStorage.setItem('setupTime', now);
+    }
+}
+
+// restrict + , - e . character input type number
+
+document.querySelector(".your_class").addEventListener("keypress", function (evt) {
+    if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57)
+    {
+        evt.preventDefault();
+    }
 });
 

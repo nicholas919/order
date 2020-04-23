@@ -1,6 +1,28 @@
+.navbar{
+  font-family: 'Righteous', cursive;
+  padding:30px;
+}
+
+
+.navbar a {
+  float: left;
+  color:#f2f2f2;
+  text-decoration:none;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size:25px;
+}
+
 textarea{
   height:1000px;
   resize: none;
+}
+
+th{
+  word-wrap:break-word;
 }
 
 .container div.alert {
@@ -121,3 +143,4 @@ input::-webkit-inner-spin-button {
   }
 }
 /*-------------------------------------------------------*/
+
