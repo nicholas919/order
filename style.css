@@ -1,10 +1,13 @@
 .navbar{
   font-family: 'Righteous', cursive;
   padding:30px;
-  background-color:#6983aa;
+  background-color:#253655;
 
 }
 
+.background{
+  background-color:;
+}
 
 .navbar a {
   float: left;
