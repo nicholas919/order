@@ -118,7 +118,7 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
   const pengiriman = document.querySelector("#pengiriman").value;
 
   // validation
-  if(namaCustomer === '<p></p>' || produk === '<p></p>' || noHpCustomer === '<p></p>' || transaksi === '<p></p>' || pengiriman === '<p></p>') {
+  if(namaCustomer === '' || produk === '' || noHpCustomer === '' || transaksi === '' || pengiriman === '') {
     // show NOT VALIDATED alert
     UI.showAlert('Isi Data dengan Lengkap!', 'danger');
   } else {
@@ -173,4 +173,6 @@ document.querySelector(".your_class").addEventListener("keypress", function (evt
         evt.preventDefault();
     }
 });
+
+
 

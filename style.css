@@ -1,13 +1,8 @@
 .navbar{
   font-family: 'Righteous', cursive;
   padding:30px;
-  background-color:#253655;
-
 }
 
-.background{
-  background-color:;
-}
 
 .navbar a {
   float: left;
@@ -29,6 +24,7 @@ textarea{
 th{
   word-wrap:break-word;
 }
+
 
 .container div.alert {
   /* color: gold; */
@@ -135,6 +131,85 @@ input::-webkit-inner-spin-button {
     animation: glow 1s ease-in infinite;
   }
 
+/*tombol screenshot*/
+.tombol2 {
+  background: orange;
+  border: none;
+  border-radius: 10px;
+  color: snow; 
+  cursor: pointer;
+  font-size: 1.25em;
+  letter-spacing: .1em;
+  outline: none;
+  position: relative; 
+  text-transform: uppercase;
+
+}
+
+.tombol2::before {
+    background: orange;
+    border-radius: inherit;
+    content: '';
+    filter: blur(10px); 
+    opacity: .75;
+    position: absolute;
+    transition: all .3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+.tombol2:hover::before {
+    filter: blur(20px);
+    opacity: 1;
+  }
+
+
+.tombol2:hover {
+    animation: glow 1s ease-in infinite;
+  }
+
+.tombol3 {
+  background: grey;
+  border: none;
+  border-radius: 10px;
+  color: ; 
+  cursor: pointer;
+  font-size: 1.25em;
+  letter-spacing: .1em;
+  outline: none;
+  position: relative; 
+  text-transform: uppercase;
+
+}
+
+.tombol3::before {
+    background: grey;
+    border-radius: inherit;
+    content: '';
+    filter: blur(10px); 
+    opacity: .75;
+    position: absolute;
+    transition: all .3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+.tombol3:hover::before {
+    filter: blur(20px);
+    opacity: 1;
+  }
+
+
+.tombol3:hover {
+    animation: glow 1s ease-in infinite;
+  }
+
 /*-------------------------------------------------------*/
 @keyframes glow {
   0% {
@@ -149,3 +224,7 @@ input::-webkit-inner-spin-button {
 }
 /*-------------------------------------------------------*/
 
+.form-group{
+  padding-left:0px;
+  padding-right:0px;
+}

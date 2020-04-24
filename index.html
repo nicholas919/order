@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
   <title>Database Order</title>
 </head>
 <body>
@@ -28,12 +30,13 @@
         <label for="produk">Produk</label>
         <textarea id="produk" class="form-control" placeholder="Isi Produk..."></textarea>
       </div>
-      <div class="form-group col">
+  <div class="form-row">
+      <div class="form-group col-md-4">
         <label for="noHpCustomer">No HP Customer</label>
         <input type="number" id="noHpCustomer" class="form-control your_class" placeholder="e.g. 081234567890" autocomplete="off" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
     maxlength = "13">
       </div>
-      <div class="form-group col">
+      <div class="form-group col-md-4">
         <label for="transaksi">Transaksi</label>
         <select  id="transaksi" class="form-control">
           <option value="" disabled selected hidden> Transaksi Melalui...</option>
@@ -47,7 +50,7 @@
           <option>Website</option>
         </select>
       </div>
-       <div class="form-group col">
+       <div class="form-group col-md-4">
         <label for="pengiriman">Ekspedisi</label>
         <select id="pengiriman" class="form-control">
           <option value="" disabled selected hidden> Silahkan Pilih Ekspedisi</option>
@@ -61,12 +64,14 @@
           <option>SiCepat</option>
         </select>
       </div>
+    </div>
       <br>
       <input type="submit" value="Submit" class="btn btn-success btn-block mb-4 tombol">
     </div>
     </form>
-
-    <table class="table table-striped mt-4 col-lg-12"">
+    <button id="btn-Preview-Image" class="btn btn-light btn-block mb-4 tombol3" onclick="myFunction()">Preview</button>
+    <a id="btn-Convert-Html2Image" class="btn btn-warning btn-block mb-4 tombol2">Screenshot</a>
+    <table id="html-content-holder" class="table table-striped mt-4 col-lg-12">
       <thead>
         <tr>
           <th>Nama Customer</th>
@@ -79,14 +84,38 @@
       </thead>
       <tbody id="book-list"></tbody>
     </table>
-
+    <div id="previewImage">
+    </div>
   <script src="https://kit.fontawesome.com/4ca5255d6d.js"></script>
   <script src="app.js"></script> 
-<script>
-  var receiverWindow = document.getElementById('receiver').contentWindow;
+  <script>
 
+    function myFunction() {
 
-</script>
+  document.getElementById("btn-Preview-Image").style.visibility = "hidden";
+  document.getElementById("btn-Preview-Image").style.display = "none";
+}
+
+    var element = $("#html-content-holder"); // global variable
+var getCanvas; // global variable
+
+    $("#btn-Preview-Image").on('click', function () {
+         html2canvas(element, {
+         onrendered: function (canvas) {
+                $("#previewImage").append(canvas);
+                getCanvas = canvas;
+             }
+         });
+    });
+
+    $("#btn-Convert-Html2Image").on('click', function () {
+    var imgageData = getCanvas.toDataURL("image/png");
+    // Now browser starts downloading it instead of just showing it
+    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+    $("#btn-Convert-Html2Image").attr("download", "Data.png").attr("href", newData);
+});
+  </script>
+
 </body>
 </html>
 
