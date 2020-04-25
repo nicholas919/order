@@ -1,6 +1,7 @@
 .navbar{
   font-family: 'Righteous', cursive;
   padding:30px;
+  width:100%;
 }
 
 
@@ -21,9 +22,7 @@ textarea{
   resize: none;
 }
 
-th{
-  word-wrap:break-word;
-}
+
 
 
 .container div.alert {
@@ -225,6 +224,57 @@ input::-webkit-inner-spin-button {
 /*-------------------------------------------------------*/
 
 .form-group{
+  padding-left:0px;
+  padding-right:0px;
+}
+
+thead{
+  background-color: #204051;
+}
+
+tbody{
+  background-color: #3b6978;
+}
+
+tbody{
+  color:#100303;
+  font-size:18px;
+  font-family:Times new roman;
+  width:fixed;
+  text-align:left;
+}
+
+th{
+  color:#100303;
+  font-size:18px;
+  font-family:Times new roman;
+  word-wrap: break-word;
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+.noselect {
+    -webkit-user-select: none; /* Safari */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+form{
+  width:auto;
+}
+
+table {
+  display:block;
+  width:fixed;
+  overflow-x : scroll;
+  overflow-y : scroll;
+  height:500px;
+}
+
+.table{
   padding-left:0px;
   padding-right:0px;
 }
