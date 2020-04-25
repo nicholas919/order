@@ -70,15 +70,15 @@
     </div>
     </form>
     <button id="btn-Preview-Image" class="btn btn-light btn-block mb-4 tombol3" onclick="myFunction()">Scan</button>
-    <a id="btn-Convert-Html2Image" class="btn btn-warning btn-block mb-4 tombol2">Download</a>
+    <a id="btn-Convert-Html2Image" class="btn btn-warning btn-block mb-4 tombol2" id="download">Download</a>
     <table id="html-content-holder" class="table table-striped mt-4 col-lg-12 noselect">
       <thead>
         <tr>
-          <th width = "30%">Nama Customer</th>
+          <th width = "20%">Nama Customer</th>
           <th width = "30%">Produk</th>
           <th width = "20%">No HP Customer</th>
-          <th width = "10%">Transaksi</th>
-          <th width = "10%">Ekspedisi</th>
+          <th width = "15%">Transaksi</th>
+          <th width = "15%">Ekspedisi</th>
           <th></th>
         </tr>
       </thead>
@@ -111,10 +111,11 @@ var getCanvas; // global variable
 
     $("#btn-Convert-Html2Image").on('click', function () {
     var imgageData = getCanvas.toDataURL("image/png");
-    // Now browser starts downloading it instead of just showing it
     var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
-    $("#btn-Convert-Html2Image").attr("download", "Data.png").attr("href", newData);
+    $("#btn-Convert-Html2Image").attr("download", this.download= 'data_' + getFormattedTime() + '.png').attr("href", newData);
 });
+
+    
 </script>
 </body>
 </html>

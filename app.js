@@ -32,7 +32,7 @@ class UI {
       <td>${book.noHpCustomer}</td>
       <td>${book.transaksi}</td>
       <td>${book.pengiriman}</td>
-      <td><a href="#" class="btn btn-danger btn-sm delete tombol1">X</a></td>
+      <td><a href="#" class="btn btn-danger btn-sm delete tombol1" style="padding:0px 8px 0px;">x</a></td>
     `;
     
     list.appendChild(row);
@@ -53,7 +53,7 @@ class UI {
     const table = document.querySelector('.table');
     container.insertBefore(div, table);
     // remove alert after 5 seconds
-    setTimeout(() => document.querySelector('.alert').remove(), 5000);
+    setTimeout(() => document.querySelector('.alert').remove(), 1000);
   }
 
   static clearFields() {
@@ -175,4 +175,14 @@ document.querySelector(".your_class").addEventListener("keypress", function (evt
 });
 
 
+
+function getFormattedTime() {
+    const today = new Date();
+    const y = today.getFullYear();
+    const m = today.getMonth() + 1;
+    const d = today.getDate();
+    const h = today.getHours();
+    const mi = today.getMinutes();
+    return d + "/" + m + "/" + y + "," + h + "." + mi ;
+}
 
