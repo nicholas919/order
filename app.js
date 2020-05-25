@@ -70,10 +70,10 @@ class UI {
 class Store {
   static getBooks() {
     let books;
-    if(globalStorage.getItem('books') === null) {
+    if(Store.getItem('books') === null) {
       books = [];
     } else {
-      books = JSON.parse(globalStorage.getItem('books'));
+      books = JSON.parse(Store.getItem('books'));
     }
 
     return books;
@@ -84,7 +84,7 @@ class Store {
 
     books.push(book);
 
-    globalStorage.setItem('books', JSON.stringify(books));
+    Store.setItem('books', JSON.stringify(books));
   }
 
   static removeBook(pengiriman) {
@@ -96,7 +96,7 @@ class Store {
       }
     });
 
-    globalStorage.setItem('books', JSON.stringify(books));
+    Store.setItem('books', JSON.stringify(books));
   }
 }
 
@@ -155,13 +155,13 @@ document.querySelector("#book-list").addEventListener("click", (e) => {
 // time expiry 168 hours
 const hours = 168; 
 const now = new Date().getTime();
-const setupTime = globalStorage.getItem('setupTime');
+const setupTime = Store.getItem('setupTime');
 if (setupTime == null) {
-    globalStorage.setItem('setupTime', now)
+    Store.setItem('setupTime', now)
 } else {
     if(now-setupTime > hours*60*60*1000) {
-        globalStorage.clear()
-        globalStorage.setItem('setupTime', now);
+        Store.clear()
+        Store.setItem('setupTime', now);
     }
 }
 
