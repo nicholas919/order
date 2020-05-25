@@ -17,6 +17,7 @@
 <nav class="navbar navbar-light bg-dark col">
    <a href="#">Galaxy</a>
  </nav>
+ <marquee style="z-index: 1;overflow: hidden;background-color: navy;color:white;">Hello</marquee>
   <div class="container mt-2">
     <h1 class="display-4 text-center"></h1>
     <br>
@@ -115,7 +116,9 @@ var getCanvas; // global variable
     $("#btn-Convert-Html2Image").attr("download", this.download= 'data_' + getFormattedTime() + '.png').attr("href", newData);
 });
 
-    
+    window.addEventListener('storage', function (e) {
+  console.log(`${e.key}: ${e.oldValue} => ${e.newValue}`);
+});
 </script>
 </body>
 </html>
